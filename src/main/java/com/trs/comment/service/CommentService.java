@@ -3,6 +3,7 @@ package com.trs.comment.service;
 import com.season.core.Page;
 import com.trs.comment.dao.CommentDao;
 import com.trs.comment.pojo.Comment;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
  * @author : Julian.cao
  * Create Time:2019/11/12 17:36
  */
+@Slf4j
 @Service
 public class CommentService {
     @Autowired
@@ -33,5 +35,9 @@ public class CommentService {
 
     public Integer removeCommentById(Integer id){
         return commentDao.removeCommentById(id);
+    }
+
+    public Integer updateComment(Comment comment){
+        return commentDao.updateComment(comment);
     }
 }

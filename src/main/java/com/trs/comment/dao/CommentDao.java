@@ -39,4 +39,8 @@ public class CommentDao {
         return seasonDao.deleteById(Comment.class, id);
     }
 
+    public Integer updateComment(Comment comment){
+        return seasonDao.update(comment, null);
+    }
+
 }
