@@ -71,7 +71,8 @@ public class CommentController {
 
     @GetMapping("/removeCommentById")
     public String removeCommentById(Integer id){
-         commentService.removeCommentById(id);
+        Integer count = commentService.removeCommentById(id);
+        log.debug(count.toString());
          return "redirect:http://localhost:8080/index.html";
     }
 

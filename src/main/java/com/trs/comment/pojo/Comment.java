@@ -3,9 +3,6 @@ package com.trs.comment.pojo;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.season.orm.dao.annotation.TableInfo;
 import com.season.orm.dao.annotation.Transient;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
