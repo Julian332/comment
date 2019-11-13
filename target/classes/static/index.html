@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>comments</title>
+    <script src="webjars/jquery/1.8.3/jquery.js"></script>
+
+
+</head>
+<body>
+<div>
+    <div>
+        <span id="user-name"></span><span> 回复: </span><span id="to-user-name0"></span>
+    </div>
+    <div>
+        <span id="content0"></span>
+    </div>
+    <div>
+        <span></span>
+        <span>查看对话</span>
+        <span id="time0"></span>
+    </div>
+    <br>
+    <br>
+
+    <hr>
+    <br>
+    <br>
+    <div>
+        <span id="user-name1"></span><span> 回复: </span><span id="to-user-name1"></span>
+    </div>
+    <div>
+        <span id="content1"></span>
+    </div>
+    <div>
+        <span></span>
+        <span>查看对话</span>
+        <span id="time1"></span>
+    </div>
+    <br>
+    <br>
+
+    <hr>
+    <br>
+    <br>
+    <div>
+        <span id="user-name2"></span><span> 回复: </span><span id="to-user-name2"></span>
+    </div>
+    <div>
+        <span id="content2"></span>
+    </div>
+    <div>
+        <span></span>
+        <span>查看对话</span>
+        <span id="time2"></span>
+    </div>
+</div>
+<br>
+<br>
+
+<hr>
+<br>
+<br>
+
+<div>
+    <h1>添加评论</h1>
+    <form action="http://localhost:8080/save">
+        <label>评论的人的id
+            <input type="text" name="replyIdOfComment">
+        </label>
+        <label>自己名字
+            <input type="text" name="userName">
+        </label>
+        <label>被评论内容的id
+            <input type="text" name="commentedId">
+        </label>
+        <br>
+        <label>内容
+            <input type="text" name="content">
+        </label>
+        <input type="submit" value="提交">
+    </form>
+    <br>
+    <br>
+
+    <hr>
+    <br>
+    <br>
+    <h1>删除评论</h1>
+<form   action="http://localhost:8080/removeCommentById">
+    <label>id
+        <input type="text" name="id">
+    </label>
+    <label>
+        <input type="submit" >
+    </label>
+
+</form>
+</div>
+<script type="text/javascript">
+
+    var replyId0;
+    var replyId1;
+    var replyId2;
+
+    function function1() {
+        // alert("nih");
+        $.ajax({
+            url: "http://localhost:8080/getPage?pageNo=1&pageSize=3",
+            type: "get",
+            datatype: "json",
+            success: function (data) {
+                // console.log(data);
+                // var username1 = data.entities[0].username;
+                // alert(username1);
+                // var username2 = data.entities[2].username;
+                // var username3 = data.entities[3].username;
+                $("#user-name").text(data.entities[0].userName);
+                $("#user-name1").text(data.entities[1].userName);
+                $("#user-name2").text(data.entities[2].userName);
+
+                $("#content0").text(data.entities[0].content);
+                $("#content1").text(data.entities[1].content);
+                $("#content2").text(data.entities[2].content);
+
+                // $("#time0").text(data.entities[0].commentTime);
+                // $("#time1").text(data.entities[1].commentTime);
+                // $("#time2").text(data.entities[2].commentTime);
+
+                replyId0 = data.entities[0].replyIdOfComment;
+                replyId1 = data.entities[1].replyIdOfComment;
+                replyId2 = data.entities[2].replyIdOfComment;
+
+
+            }
+
+        })
+
+    }
+
+    function function2() {
+        $.ajax({
+            url: "http://localhost:8080/getUserNameByCommentedId?id=2",
+            type: "get",
+            datatype: "json",
+            success: function (data) {
+                $("#to-user-name0").text(data)
+            }
+        });
+        $.ajax({
+            url: "http://localhost:8080/getUserNameByCommentedId?id=4",
+            type: "get",
+            datatype: "json",
+            success: function (data) {
+                $("#to-user-name1").text(data)
+            }
+        });
+        $.ajax({
+            url: "http://localhost:8080/getUserNameByCommentedId?id=1",
+            type: "get",
+            datatype: "json",
+            success: function (data) {
+                $("#to-user-name2").text(data)
+            }
+        })
+    }
+
+    function function3() {
+        $.ajax({
+            url: "http://localhost:8080/removeCommentById"
+        })
+    }
+
+
+    function1();
+    function2();
+</script>
+</body>
+</html>
