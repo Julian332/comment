@@ -58,22 +58,18 @@ public class CommentController {
         //springboot重定向 "redirect:http..."
     }
 
-    /**
-     * Description
-     *
-     * @param integer id
-     * @return java.lang.Integer
-     * @author julian cao
-     */
-    public Integer test(Integer integer, String string) {
-        return 1;
-    }
-
     @GetMapping("/removeCommentById")
-    public String removeCommentById(Integer id){
+    public String removeCommentById(Integer id) {
         Integer count = commentService.removeCommentById(id);
         log.debug(count.toString());
-         return "redirect:http://localhost:8080/index.html";
+        return "redirect:http://localhost:8080/index.html";
+    }
+
+    @RequestMapping("/updateComment")
+    public String updateComment(Comment comment) {
+        Integer count = commentService.updateComment(comment);
+        log.debug(count.toString());
+        return "redirect:http://localhost:8080/index.html";
     }
 
 

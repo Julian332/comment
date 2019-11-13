@@ -87,15 +87,38 @@
     <br>
     <br>
     <h1>删除评论</h1>
-<form   action="http://localhost:8080/removeCommentById">
-    <label>id
-        <input type="text" name="id">
-    </label>
-    <label>
-        <input type="submit" >
-    </label>
+    <form action="http://localhost:8080/removeCommentById">
+        <label>id
+            <input type="text" name="id">
+        </label>
+        <label>
+            <input type="submit">
+        </label>
 
-</form>
+    </form>
+    <br>
+    <br>
+
+    <hr>
+    <br>
+    <br>
+    <h1>修改</h1>
+    <form action="http://localhost:8080/updateComment">
+        <label>评论的人的id
+            <input type="text" name="replyIdOfComment">
+        </label>
+        <label>自己名字
+            <input type="text" name="userName">
+        </label>
+        <label>被评论内容的id
+            <input type="text" name="commentedId">
+        </label>
+        <br>
+        <label>内容
+            <input type="text" name="content">
+        </label>
+        <input type="submit" value="提交">
+    </form>
 </div>
 <script type="text/javascript">
 
